@@ -54,6 +54,7 @@ pub mod push_down_limit;
 pub mod replace_distinct_aggregate;
 pub mod scalar_subquery_to_join;
 pub mod simplify_expressions;
+pub mod simplify_group_key;
 pub mod single_distinct_to_groupby;
 pub mod unwrap_cast_in_comparison;
 pub mod utils;

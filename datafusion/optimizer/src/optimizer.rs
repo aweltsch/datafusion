@@ -53,6 +53,7 @@ use crate::push_down_limit::PushDownLimit;
 use crate::replace_distinct_aggregate::ReplaceDistinctWithAggregate;
 use crate::scalar_subquery_to_join::ScalarSubqueryToJoin;
 use crate::simplify_expressions::SimplifyExpressions;
+use crate::simplify_group_key::SimplifyGroupKey;
 use crate::single_distinct_to_groupby::SingleDistinctToGroupBy;
 use crate::unwrap_cast_in_comparison::UnwrapCastInComparison;
 use crate::utils::log_plan;
@@ -252,6 +253,7 @@ impl Optimizer {
             Arc::new(EliminateDuplicatedExpr::new()),
             Arc::new(EliminateFilter::new()),
             Arc::new(EliminateCrossJoin::new()),
+            Arc::new(SimplifyGroupKey::new()),
             Arc::new(CommonSubexprEliminate::new()),
             Arc::new(EliminateLimit::new()),
             Arc::new(PropagateEmptyRelation::new()),
